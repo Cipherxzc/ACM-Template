@@ -1,5 +1,9 @@
 # Template
 
+<style>
+h3 { page-break-before: avoid; }
+</style>
+
 ## 目录
 
 - [图论](#图论)

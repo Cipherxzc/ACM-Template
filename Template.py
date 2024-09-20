@@ -3,10 +3,15 @@ import os
 newpage = "<div style=\"page-break-after: always;\"></div>"
 
 def generate_markdown():
-    # 创建并打开 Template.md 文件
+    # 创建并打开 README.md 文件
     with open("README.md", "w", encoding="utf-8") as md_file:
         # 写入一级标题
         md_file.write("# Template\n\n")
+        
+        # 添加 CSS 样式，防止在三级标题前换页
+        md_file.write("<style>\n")
+        md_file.write("h3 { page-break-before: avoid; }\n")
+        md_file.write("</style>\n\n")
         
         # 初始化目录内容
         toc = "## 目录\n\n"
@@ -41,7 +46,7 @@ def generate_markdown():
                             content += cpp_file_content.read()
                             content += "\n```\n"
                     
-                    # 添加分页符
+                    # 添加分页符在每个文件夹内容结束后
                     content += "\n" + newpage + "\n"
         
         # 将目录和内容写入到文件中
