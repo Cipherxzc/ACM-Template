@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 inline int lg(int x) { return 31 ^ __builtin_clz(x); }

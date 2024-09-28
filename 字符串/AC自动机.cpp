@@ -1,7 +1,4 @@
-#include <iostream>
-#include <queue>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct AC {

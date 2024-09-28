@@ -1,6 +1,4 @@
-#include <algorithm>
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 1e6 + 5;
@@ -8,18 +6,6 @@ int x1[N], x2[N], cnt[N], sa[N];
 // x1[i]: 编号为i的后缀的第一关键字
 // x2[i]: 第二关键字排名为i的后缀的编号
 // sa[i]: 排名为i的后缀的编号
-
-inline void Count(int n, int m) {
-    for (int i = 1; i <= m; i++) {
-        cnt[i] = 0;
-    }
-    for (int i = 0; i < n; i++) {
-        cnt[x1[i]]++;
-    }
-    for (int i = 2; i <= m; i++) {
-        cnt[i] += cnt[i - 1];
-    }
-}
 
 void SA(const string &s) {
     int n = s.size(), m = 122;  // 第一关键字的种类数

@@ -1,11 +1,4 @@
-#include <algorithm>
-#include <cmath>
-#include <complex>
-#include <cstring>
-#include <iomanip>
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 using db = double;

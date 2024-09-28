@@ -1,6 +1,4 @@
-#include <iostream>
-#include <stack>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 1e4 + 5;

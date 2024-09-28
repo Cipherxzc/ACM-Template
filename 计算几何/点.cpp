@@ -1,5 +1,4 @@
-#include <algorithm>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 using db = double;  // 换long double时，需要同时替换alpha、abs、getTheta函数
 const db eps = 1e-9;
