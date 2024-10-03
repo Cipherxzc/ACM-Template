@@ -5,7 +5,6 @@ using db = double;
 const db eps = 1e-6;
 
 inline int sign(db x) { return x < -eps ? -1 : x > eps; }
-inline int cmp(db x, db y) { return sign(x - y); }
 
 const int N = 105;
 int n, m;
@@ -24,7 +23,7 @@ namespace Gauss {
         }
     }
 
-    inline void add(int y, int x, double k) {
+    inline void add(int y, int x, db k) {
         for (int i = 1; i <= m + 1; i++) {
             a[y][i] += a[x][i] * k;
         }
@@ -34,14 +33,14 @@ namespace Gauss {
         int p = 1;
         for (int i = 1; i <= m; i++) {
             for (int j = p; j <= n; j++) {
-                if (cmp(a[j][i], 0) != 0) {
+                if (sign(a[j][i]) != 0) {
                     if (j != p) {
                         swapr(p, j);
                     }
                     break;
                 }
             }
-            if (cmp(a[p][i], 0) == 0) {
+            if (sign(a[p][i]) == 0) {
                 continue;
             }
 
@@ -55,7 +54,7 @@ namespace Gauss {
         }
 
         for (int i = p; i <= n; i++) {
-            if (cmp(a[i][m + 1], 0) != 0) {
+            if (sign(a[i][m + 1]) != 0) {
                 return -1;  // No Solution
             }
         }
