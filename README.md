@@ -28,6 +28,8 @@ h3 { page-break-before: avoid; }
   - [Pollard_Rho.cpp](#pollard_rhocpp)
   - [多项式乘法逆.cpp](#多项式乘法逆cpp)
   - [矩阵快速幂.cpp](#矩阵快速幂cpp)
+  - [线性筛.cpp](#线性筛cpp)
+  - [高斯消元.cpp](#高斯消元cpp)
 - [数据结构](#数据结构)
   - [ST表.cpp](#st表cpp)
   - [分块.cpp](#分块cpp)
@@ -52,9 +54,12 @@ h3 { page-break-before: avoid; }
   - [二分图最大匹配.cpp](#二分图最大匹配cpp)
   - [二分图最大权完美匹配.cpp](#二分图最大权完美匹配cpp)
   - [最小费用最大流.cpp](#最小费用最大流cpp)
+  - [有负环的费用流.cpp](#有负环的费用流cpp)
   - [网络最大流.cpp](#网络最大流cpp)
 - [计算几何](#计算几何)
+  - [平面最近点对.cpp](#平面最近点对cpp)
   - [点.cpp](#点cpp)
+  - [线.cpp](#线cpp)
 
 
 
@@ -64,9 +69,7 @@ h3 { page-break-before: avoid; }
 ### 2-SAT.cpp
 
 ```cpp
-#include <iostream>
-#include <stack>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 2e6 + 5;
@@ -165,9 +168,7 @@ int main() {
 ### dfn序lca.cpp
 
 ```cpp
-#include <algorithm>
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 inline int lg(int x) { return 31 ^ __builtin_clz(x); }
@@ -266,8 +267,7 @@ int main() {
 ### 倍增lca.cpp
 
 ```cpp
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 inline int lg(int x) { return 31 ^ __builtin_clz(x); }
@@ -349,9 +349,7 @@ int main() {
 ### 强连通分量.cpp
 
 ```cpp
-#include <iostream>
-#include <stack>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 1e4 + 5;
@@ -455,10 +453,7 @@ int main() {
 ### AC自动机.cpp
 
 ```cpp
-#include <iostream>
-#include <queue>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct AC {
@@ -553,8 +548,7 @@ int main() {
 ### exkmp.cpp
 
 ```cpp
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 
@@ -635,8 +629,7 @@ int main() {
 ### kmp.cpp
 
 ```cpp
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 1e6 + 5;
@@ -689,9 +682,7 @@ int main() {
 ### Manacher.cpp
 
 ```cpp
-#include <iostream>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 
@@ -742,9 +733,7 @@ int main() {
 ### 后缀排序.cpp
 
 ```cpp
-#include <algorithm>
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 1e6 + 5;
@@ -752,18 +741,6 @@ int x1[N], x2[N], cnt[N], sa[N];
 // x1[i]: 编号为i的后缀的第一关键字
 // x2[i]: 第二关键字排名为i的后缀的编号
 // sa[i]: 排名为i的后缀的编号
-
-inline void Count(int n, int m) {
-    for (int i = 1; i <= m; i++) {
-        cnt[i] = 0;
-    }
-    for (int i = 0; i < n; i++) {
-        cnt[x1[i]]++;
-    }
-    for (int i = 2; i <= m; i++) {
-        cnt[i] += cnt[i - 1];
-    }
-}
 
 void SA(const string &s) {
     int n = s.size(), m = 122;  // 第一关键字的种类数
@@ -844,8 +821,7 @@ int main() {
 ### 回文自动机.cpp
 
 ```cpp
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 5e5 + 5;
@@ -990,10 +966,7 @@ int main() {
 ### FFT.cpp
 
 ```cpp
-#include <cmath>
-#include <complex>
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 using db = double;
@@ -1073,8 +1046,7 @@ int main() {
 ### FWT.cpp
 
 ```cpp
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 using poly = vector<LL>;
@@ -1198,9 +1170,7 @@ int main() {
 ### Min_25筛.cpp
 
 ```cpp
-#include <cmath>
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 
@@ -1297,8 +1267,7 @@ int main() {
 ### NTT.cpp
 
 ```cpp
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 using poly = vector<LL>;
@@ -1389,9 +1358,7 @@ int main() {
 ### Pollard_Rho.cpp
 
 ```cpp
-#include <cmath>
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 
@@ -1508,8 +1475,7 @@ int main() {
 ### 多项式乘法逆.cpp
 
 ```cpp
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 using poly = vector<LL>;
@@ -1718,6 +1684,145 @@ int main() {
     return 0;
 }
 
+```
+### 线性筛.cpp
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, q;
+vector<int> p;
+
+void Euler(int n) {
+    vector<bool> notp(n + 1);
+    for (int i = 2; i <= n; i++) {
+        if (!notp[i]) {
+            p.push_back(i);
+        }
+        for (int j = 0; j < p.size() && p[j] <= n / i; j++) {
+            notp[i * p[j]] = true;
+            if (i % p[j] == 0) {
+                break;
+            }
+        }
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0), cout.tie(0);
+
+    cin >> n >> q;
+
+    Euler(n);
+
+    int k;
+    while (q--) {
+        cin >> k;
+        cout << p[k - 1] << '\n';
+    }
+
+    return 0;
+}
+```
+### 高斯消元.cpp
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using db = double;
+
+const db eps = 1e-6;
+
+inline int sign(db x) { return x < -eps ? -1 : x > eps; }
+inline int cmp(db x, db y) { return sign(x - y); }
+
+const int N = 105;
+int n, m;
+db a[N][N];
+
+namespace Gauss {
+    inline void swapr(int x, int y) {
+        for (int i = 1; i <= m + 1; i++) {
+            swap(a[x][i], a[y][i]);
+        }
+    }
+
+    inline void mul(int x, db k) {
+        for (int i = 1; i <= m + 1; i++) {
+            a[x][i] *= k;
+        }
+    }
+
+    inline void add(int y, int x, double k) {
+        for (int i = 1; i <= m + 1; i++) {
+            a[y][i] += a[x][i] * k;
+        }
+    }
+
+    int solve() {
+        int p = 1;
+        for (int i = 1; i <= m; i++) {
+            for (int j = p; j <= n; j++) {
+                if (cmp(a[j][i], 0) != 0) {
+                    if (j != p) {
+                        swapr(p, j);
+                    }
+                    break;
+                }
+            }
+            if (cmp(a[p][i], 0) == 0) {
+                continue;
+            }
+
+            mul(i, 1 / a[p][i]);
+            for (int j = 1; j <= n; j++) {
+                if (j != p) {
+                    add(j, p, -a[j][i]);
+                }
+            }
+            p++;
+        }
+
+        for (int i = p; i <= n; i++) {
+            if (cmp(a[i][m + 1], 0) != 0) {
+                return -1;  // No Solution
+            }
+        }
+        if (p <= m) {
+            return 0;  // Too Many Solutions
+        } else {
+            return 1;  // One Solution
+        }
+    }
+}  // namespace Gauss
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0), cout.tie(0);
+
+    cin >> n;
+    m = n;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n + 1; j++) {
+            cin >> a[i][j];
+        }
+    }
+
+    int flag = Gauss::solve();
+
+    if (flag == 1) {
+        cout << fixed << setprecision(2);
+        for (int i = 1; i <= n; i++) {
+            cout << 'x' << i << '=' << a[i][m + 1] << endl;
+        }
+    } else {
+        cout << flag << endl;
+    }
+
+    return 0;
+}
 ```
 
 <div style="page-break-after: always;"></div>
@@ -3382,7 +3487,7 @@ int main(){
 ### 对拍.cpp
 
 ```cpp
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
@@ -3515,14 +3620,7 @@ int main() {
 ### 高精度数.cpp
 
 ```cpp
-#include <algorithm>
-#include <cmath>
-#include <complex>
-#include <cstring>
-#include <iomanip>
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
 using db = double;
@@ -4229,6 +4327,147 @@ int main() {
     return 0;
 }
 ```
+### 有负环的费用流.cpp
+
+```cpp
+// 带负环时，需要建立虚拟源汇点，并将负边初始满流
+
+#include <bits/stdc++.h>
+using namespace std;
+using LL = long long;
+
+const int N = 5e3 + 5;
+const LL INF = 1e18;
+int n, m;
+
+namespace Flow {
+    struct edge {
+        int to, nxt;  // 剩余容量
+        LL cost, flow;
+        edge(int _to = 0, int _nxt = 0, LL _cost = 0, LL _flow = 0) : to(_to), nxt(_nxt), cost(_cost), flow(_flow) {}
+    };
+
+    int n, s, t, ss, tt, head[N], tot = 1;
+    vector<edge> e;
+    LL minf[N], dis[N], pre[N], sum[N], res0;
+    bool inq[N];
+
+    // clang-format off
+    inline void add(int u, int v, LL w, LL f) {
+        if (w < 0){  // 初始满流
+            sum[v] += f; sum[u] -= f;
+            res0 += w * f;
+            swap(u, v);
+            w = -w;
+        }
+        e.emplace_back(v, head[u], w, f); head[u] = ++tot;
+        e.emplace_back(u, head[v], -w, 0); head[v] = ++tot;
+    }
+
+    void init(int _n, int _s, int _t) {
+        n = _n; s = _s; t = _t;
+        for (int i = 1; i <= n; i++) {
+            sum[i] = head[i] = 0;
+        }
+        res0 = 0;
+        tot = 1;
+        e.resize(2);
+    }
+    // clang-format on
+
+    bool spfa(int s, int t) {
+        for (int i = 1; i <= n; i++) {
+            inq[i] = false;
+            dis[i] = INF;
+        }
+        queue<int> que;
+        que.push(s);
+        inq[s] = true;
+        dis[s] = 0;
+        minf[s] = INF;
+
+        while (!que.empty()) {
+            int p = que.front();
+            que.pop();
+            inq[p] = false;
+            for (int i = head[p]; i; i = e[i].nxt) {
+                int q = e[i].to;
+                if (!e[i].flow) {
+                    continue;
+                }
+                if (dis[p] + e[i].cost < dis[q]) {
+                    dis[q] = dis[p] + e[i].cost;
+                    pre[q] = i;
+                    minf[q] = min(minf[p], e[i].flow);
+                    if (!inq[q]) {
+                        que.push(q);
+                        inq[q] = true;
+                    }
+                }
+            }
+        }
+        return dis[t] != INF;
+    }
+
+    void build() {
+        ss = n + 1;
+        tt = n + 2;
+        for (int i = 1; i <= n; i++) {
+            if (sum[i] > 0) {
+                add(ss, i, 0, sum[i]);
+            } else if (sum[i] < 0) {
+                add(i, tt, 0, -sum[i]);
+            }
+        }
+        n += 2;
+    }
+
+    pair<LL, LL> EK() {
+        LL maxflow = 0, res = 0;
+
+        auto update = [&maxflow, &res](int s, int t) {
+            LL f = minf[t];
+            for (int p = t; p != s; p = e[pre[p] ^ 1].to) {
+                int from = pre[p];
+                e[from].flow -= f;
+                e[from ^ 1].flow += f;
+            }
+            maxflow += f;
+            res += dis[t] * f;
+        };
+
+        while (spfa(ss, tt)) {
+            update(ss, tt);
+        }
+        maxflow = 0;
+        while (spfa(s, t)) {
+            update(s, t);
+        }
+
+        return {maxflow, res0 + res};
+    }
+}  // namespace Flow
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0), cout.tie(0);
+
+    int s, t;
+    cin >> n >> m >> s >> t;
+    Flow::init(n, s, t);
+    for (int i = 1, u, v, w, f; i <= m; i++) {
+        cin >> u >> v >> f >> w;
+        Flow::add(u, v, w, f);
+    }
+    Flow::build();
+
+    auto [maxflow, res] = Flow::EK();
+
+    cout << maxflow << ' ' << res << endl;
+
+    return 0;
+}
+```
 ### 网络最大流.cpp
 
 ```cpp
@@ -4353,11 +4592,69 @@ int main() {
 
 ## 计算几何
 
+### 平面最近点对.cpp
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using LL = long long;
+
+struct node {
+    LL x, y;
+};
+
+const int N = 4e5 + 5;
+int n;
+node a[N];
+
+inline LL sqr(LL x) { return x * x; }
+inline LL dis2(const node &a, const node &b) { return sqr(a.x - b.x) + sqr(a.y - b.y); }
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0), cout.tie(0);
+
+    auto cmp1 = [](const node &a, const node &b) { return a.x < b.x; };
+    auto cmp2 = [](const node &a, const node &b) { return a.y < b.y; };
+
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i].x >> a[i].y;
+    }
+    sort(a + 1, a + n + 1, cmp1);
+
+    int p = 1;
+    LL ans = 1e18;
+    multiset<node, decltype(cmp2)> used;
+    for (int i = 1; i <= n; i++) {
+        while (p <= i && sqr(a[i].x - a[p].x) >= ans) {
+            used.extract(a[p]);
+            p++;
+        }
+
+        auto now = used.insert(a[i]);
+        for (auto it = next(now); it != used.end() && sqr(it->y - a[i].y) < ans; it++) {
+            ans = min(ans, dis2(a[i], *it));
+        }
+        if (now != used.begin()) {
+            for (auto it = prev(now); sqr(a[i].y - it->y) < ans; it--) {
+                ans = min(ans, dis2(a[i], *it));
+                if (it == used.begin()) {
+                    break;
+                }
+            }
+        }
+    }
+
+    cout << ans << endl;
+
+    return 0;
+}
+```
 ### 点.cpp
 
 ```cpp
-#include <algorithm>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 using db = double;  // 换long double时，需要同时替换alpha、abs、getTheta函数
 const db eps = 1e-9;
@@ -4407,7 +4704,10 @@ inline db dis(Point p, Point q) { return (p - q).abs(); }
 // 判断 向量p1p2 是否在 向量p1p3 的顺时针方向
 inline db cross(Point p1, Point p2, Point p3) { return det(p2 - p1, p3 - p1); }
 inline int cross_S(Point p1, Point p2, Point p3) { return sign(cross(p1, p2, p3)); }
+```
+### 线.cpp
 
+```cpp
 // 判断 直线p1p2 和 直线q1q2 是否相交
 bool isLL(Point p1, Point p2, Point q1, Point q2) { return sign(cross(q1, q2, p1) - cross(q1, q2, p2)) != 0; }
 
@@ -4481,18 +4781,6 @@ db disPS(Point q, Point p1, Point p2) {
         return fabs(det(v1, v2) / v1.abs());
     }
 }
-
-// db disPS(Point q, Point p1, Point p2) { // TLE Version
-//     if(p1 == p2){
-//         return dis(p1, q);
-//     }
-//     Point h = proj(p1, p2, q);
-//     if (isMiddle(h, p1, p2)){
-//         return dis(h, q);
-//     }else{
-//         return min(dis(p1, q), dis(p2, q));
-//     }
-// }
 
 // 求 线段p1p2 与 线段q1q2 的距离
 db disSS(Point p1, Point p2, Point q1, Point q2) {
