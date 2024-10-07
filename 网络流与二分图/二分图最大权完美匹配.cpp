@@ -6,7 +6,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
-#define mp make_pair
 
 const int N = 1e3 + 5;
 const LL INF = 1e12;

@@ -6,7 +6,6 @@ using LL = long long;
 
 const int N = 5e3 + 5;
 const LL INF = 1e18;
-int n, m;
 
 namespace Flow {
     struct edge {
@@ -115,6 +114,8 @@ namespace Flow {
         return {maxflow, res0 + res};
     }
 }  // namespace Flow
+
+int n, m;
 
 int main() {
     ios::sync_with_stdio(false);

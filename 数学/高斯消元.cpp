@@ -6,11 +6,18 @@ const db eps = 1e-6;
 
 inline int sign(db x) { return x < -eps ? -1 : x > eps; }
 
-const int N = 105;
-int n, m;
-db a[N][N];
-
 namespace Gauss {
+    int n, m;
+    vector<vector<db>> a;
+
+    void init(int n_, int m_) {
+        n = n_, m = m_;
+        a.resize(n + 1);
+        for (int i = 1; i <= n; i++) {
+            a[i].resize(m + 2);
+        }
+    }
+
     inline void swapr(int x, int y) {
         for (int i = 1; i <= m + 1; i++) {
             swap(a[x][i], a[y][i]);
@@ -66,15 +73,17 @@ namespace Gauss {
     }
 }  // namespace Gauss
 
+int n;
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0), cout.tie(0);
 
     cin >> n;
-    m = n;
+    Gauss::init(n, n);
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n + 1; j++) {
-            cin >> a[i][j];
+            cin >> Gauss::a[i][j];
         }
     }
 
@@ -83,7 +92,7 @@ int main() {
     if (flag == 1) {
         cout << fixed << setprecision(2);
         for (int i = 1; i <= n; i++) {
-            cout << 'x' << i << '=' << a[i][m + 1] << endl;
+            cout << 'x' << i << '=' << Gauss::a[i][n + 1] << endl;
         }
     } else {
         cout << flag << endl;

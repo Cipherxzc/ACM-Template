@@ -4,7 +4,7 @@ using namespace std;
 inline int lg(int x) { return 31 ^ __builtin_clz(x); }
 
 const int N = 5e5 + 5;
-int n, q, root, dep[N];
+int n, q, root;
 vector<int> e[N];
 
 inline void add(int u, int v) {
@@ -13,7 +13,7 @@ inline void add(int u, int v) {
 }
 
 namespace LCA {
-    int fa[20][N];
+    int fa[20][N], dep[N];
 
     void dfs(int p) {
         for (int q : e[p]) {

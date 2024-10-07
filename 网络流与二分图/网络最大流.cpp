@@ -3,7 +3,6 @@ using namespace std;
 using LL = long long;
 
 const int N = 205, INF = 0x7fffffff;
-int n, m;
 
 namespace Flow {
     struct edge {
@@ -95,6 +94,8 @@ namespace Flow {
         return maxflow;
     }
 }  // namespace Flow
+
+int n, m;
 
 int main() {
     ios::sync_with_stdio(false);

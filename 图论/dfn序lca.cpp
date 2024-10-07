@@ -4,7 +4,7 @@ using namespace std;
 inline int lg(int x) { return 31 ^ __builtin_clz(x); }
 
 const int N = 5e5 + 5;
-int n, q, root, tot, dfn[N];
+int n, q, root;
 vector<int> e[N];
 
 inline void add(int u, int v) {
@@ -13,6 +13,8 @@ inline void add(int u, int v) {
 }
 
 namespace LCA {
+    int tot, dfn[N];
+
     struct ST {
         int n, bit;
         vector<vector<int>> st;

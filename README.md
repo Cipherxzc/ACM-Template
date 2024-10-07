@@ -73,11 +73,10 @@ h3 { page-break-before: avoid; }
 using namespace std;
 
 const int N = 2e6 + 5;
-int n, m, a[N], id[N];
 
 // 点的范围为 [2, 2n+1]，其中 2x 对应 x取0，2x+1 对应 x取1
 namespace TwoSat {
-    int val[N], dfn[N], low[N], tot, num, id[N];
+    int n, val[N], dfn[N], low[N], tot, num, id[N];
     bool ins[N];
     vector<int> e[N];
     stack<int> st;
@@ -89,7 +88,8 @@ namespace TwoSat {
         add(u, v);
     }
 
-    void init() {
+    void init(int n_) {
+        n = n_;
         for (int i = 2; i <= n * 2 + 1; i++) {
             dfn[i] = 0;
             ins[i] = false;
@@ -140,12 +140,14 @@ namespace TwoSat {
     }
 }  // namespace TwoSat
 
+int n, m;
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0), cout.tie(0);
 
     cin >> n >> m;
-    TwoSat::init();
+    TwoSat::init(n);
     for (int i = 1, u, v, x, y; i <= m; i++) {
         cin >> u >> x >> v >> y;
         TwoSat::add(u, x ^ 1, v, y);
@@ -174,7 +176,7 @@ using namespace std;
 inline int lg(int x) { return 31 ^ __builtin_clz(x); }
 
 const int N = 5e5 + 5;
-int n, q, root, tot, dfn[N];
+int n, q, root;
 vector<int> e[N];
 
 inline void add(int u, int v) {
@@ -183,6 +185,8 @@ inline void add(int u, int v) {
 }
 
 namespace LCA {
+    int tot, dfn[N];
+
     struct ST {
         int n, bit;
         vector<vector<int>> st;
@@ -273,7 +277,7 @@ using namespace std;
 inline int lg(int x) { return 31 ^ __builtin_clz(x); }
 
 const int N = 5e5 + 5;
-int n, q, root, dep[N];
+int n, q, root;
 vector<int> e[N];
 
 inline void add(int u, int v) {
@@ -282,7 +286,7 @@ inline void add(int u, int v) {
 }
 
 namespace LCA {
-    int fa[20][N];
+    int fa[20][N], dep[N];
 
     void dfs(int p) {
         for (int q : e[p]) {
@@ -353,20 +357,21 @@ int main() {
 using namespace std;
 
 const int N = 1e4 + 5;
-int n, m, a[N], id[N], num, f[N];
-vector<int> e[N], point[N];
-
-inline void add(int u, int v) { e[u].emplace_back(v); }
 
 namespace Tarjan {  // 强连通分量
-    int dfn[N], low[N], tot;
+    int n, dfn[N], low[N], tot, id[N], num;
     bool ins[N];
     stack<int> st;
+    vector<int> e[N], point[N];
 
-    void init() {
+    inline void add(int u, int v) { e[u].emplace_back(v); }
+
+    void init(int n_) {
+        n = n_;
         for (int i = 1; i <= n; i++) {
             dfn[i] = 0;
             ins[i] = false;
+            e[i].clear();
         }
         for (int i = 1; i <= num; i++) {
             point[i].clear();
@@ -408,6 +413,9 @@ namespace Tarjan {  // 强连通分量
         }
     }
 }  // namespace Tarjan
+using Tarjan::num, Tarjan::point, Tarjan::e, Tarjan::id;
+
+int n, m, a[N], f[N];
 
 int main() {
     ios::sync_with_stdio(false);
@@ -417,12 +425,12 @@ int main() {
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
     }
+    Tarjan::init(n);
     for (int i = 1, u, v; i <= m; i++) {
         cin >> u >> v;
-        add(u, v);
+        Tarjan::add(u, v);
     }
 
-    Tarjan::init();
     Tarjan::work();
 
     int ans = 0;
@@ -442,7 +450,6 @@ int main() {
 
     return 0;
 }
-
 ```
 
 <div style="page-break-after: always;"></div>
@@ -1737,11 +1744,18 @@ const db eps = 1e-6;
 
 inline int sign(db x) { return x < -eps ? -1 : x > eps; }
 
-const int N = 105;
-int n, m;
-db a[N][N];
-
 namespace Gauss {
+    int n, m;
+    vector<vector<db>> a;
+
+    void init(int n_, int m_) {
+        n = n_, m = m_;
+        a.resize(n + 1);
+        for (int i = 1; i <= n; i++) {
+            a[i].resize(m + 2);
+        }
+    }
+
     inline void swapr(int x, int y) {
         for (int i = 1; i <= m + 1; i++) {
             swap(a[x][i], a[y][i]);
@@ -1797,15 +1811,17 @@ namespace Gauss {
     }
 }  // namespace Gauss
 
+int n;
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0), cout.tie(0);
 
     cin >> n;
-    m = n;
+    Gauss::init(n, n);
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n + 1; j++) {
-            cin >> a[i][j];
+            cin >> Gauss::a[i][j];
         }
     }
 
@@ -1814,7 +1830,7 @@ int main() {
     if (flag == 1) {
         cout << fixed << setprecision(2);
         for (int i = 1; i <= n; i++) {
-            cout << 'x' << i << '=' << a[i][m + 1] << endl;
+            cout << 'x' << i << '=' << Gauss::a[i][n + 1] << endl;
         }
     } else {
         cout << flag << endl;
@@ -4080,7 +4096,6 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
-#define mp make_pair
 
 const int N = 1e3 + 5;
 const LL INF = 1e12;
@@ -4221,7 +4236,6 @@ using LL = long long;
 
 const int N = 5e3 + 5;
 const LL INF = 1e18;
-int n, m;
 
 namespace Flow {
     struct edge {
@@ -4307,6 +4321,8 @@ namespace Flow {
     }
 }  // namespace Flow
 
+int n, m;
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0), cout.tie(0);
@@ -4337,7 +4353,6 @@ using LL = long long;
 
 const int N = 5e3 + 5;
 const LL INF = 1e18;
-int n, m;
 
 namespace Flow {
     struct edge {
@@ -4447,6 +4462,8 @@ namespace Flow {
     }
 }  // namespace Flow
 
+int n, m;
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0), cout.tie(0);
@@ -4475,7 +4492,6 @@ using namespace std;
 using LL = long long;
 
 const int N = 205, INF = 0x7fffffff;
-int n, m;
 
 namespace Flow {
     struct edge {
@@ -4567,6 +4583,8 @@ namespace Flow {
         return maxflow;
     }
 }  // namespace Flow
+
+int n, m;
 
 int main() {
     ios::sync_with_stdio(false);

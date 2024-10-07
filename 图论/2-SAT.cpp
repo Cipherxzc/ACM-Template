@@ -2,11 +2,10 @@
 using namespace std;
 
 const int N = 2e6 + 5;
-int n, m, a[N], id[N];
 
 // 点的范围为 [2, 2n+1]，其中 2x 对应 x取0，2x+1 对应 x取1
 namespace TwoSat {
-    int val[N], dfn[N], low[N], tot, num, id[N];
+    int n, val[N], dfn[N], low[N], tot, num, id[N];
     bool ins[N];
     vector<int> e[N];
     stack<int> st;
@@ -18,7 +17,8 @@ namespace TwoSat {
         add(u, v);
     }
 
-    void init() {
+    void init(int n_) {
+        n = n_;
         for (int i = 2; i <= n * 2 + 1; i++) {
             dfn[i] = 0;
             ins[i] = false;
@@ -69,12 +69,14 @@ namespace TwoSat {
     }
 }  // namespace TwoSat
 
+int n, m;
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0), cout.tie(0);
 
     cin >> n >> m;
-    TwoSat::init();
+    TwoSat::init(n);
     for (int i = 1, u, v, x, y; i <= m; i++) {
         cin >> u >> x >> v >> y;
         TwoSat::add(u, x ^ 1, v, y);
